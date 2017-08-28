@@ -1,0 +1,17 @@
+# Created by .ignore support plugin (hsz.mobi)
+### Go template
+# Binaries for programs and plugins
+*.exe
+*.dll
+*.so
+*.dylib
+dist/
+
+# Test binary, build with `go test -c`
+*.test
+
+# IDE
+.idea/
+
+# Project-local cache
+vendor/

@@ -1,0 +1,8 @@
+go_import_path: github.com/borisding1994/hathcoin
+language: go
+go:
+  - 1.9
+install: make dep-install
+script:
+  - make lint
+  - make test
