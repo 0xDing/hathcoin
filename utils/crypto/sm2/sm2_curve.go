@@ -31,7 +31,7 @@ func initP256Sm2() {
 	p256Sm2.BitSize = 256
 }
 
-// P256sm2 returns a Curve which implements sm2.
+// P256Sm2 returns a Curve which implements sm2.
 //
 // The cryptographic operations are implemented using constant-time algorithms.
 func P256Sm2() elliptic.Curve {

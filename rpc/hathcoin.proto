@@ -1,0 +1,14 @@
+syntax = "proto3";
+package hathcoin;
+
+message Block {
+
+}
+
+message Transaction {
+
+}
+
+message Peer {
+    string addr = 1;
+}

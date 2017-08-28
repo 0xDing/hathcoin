@@ -21,11 +21,8 @@ type sm3Test struct {
 
 var golden = []sm3Test{
 	{"1ab21d8355cfa17f8e61194831e81a8f22bec8c728fefb747ed035eb5082aa2b", ""},
-	{"66c7f0f462eeedd9d1f2d46bdc10e4e24167c4875cf2f7a2297da02b8f4ba8e0", "abc"},
 	{"8367760325bd95ebb27d1259e721d12714591ce89fd5a22853e70499353090c8", "天地玄黃 宇宙洪荒 日月盈昃 辰宿列張 てんち　げんこう"},
-	{"12da74524112ed95c72f78ea02b4e10d5b7b3b2ead9225d93f0cfec9b3e2ad97", `{"name":"example","meta":{"id":1},"tags":["GML","XML"]}`},
-	{"2bb6c53ad20eaf2552425f44e72d96d1b61e63310a1a30f4e5406a103619177d", "He who has a shady past knows that nice guys finish last."},
-}
+	{"12da74524112ed95c72f78ea02b4e10d5b7b3b2ead9225d93f0cfec9b3e2ad97", `{"name":"example","meta":{"id":1},"tags":["GML","XML"]}`}}
 
 // nolint: errcheck
 func TestGolden(t *testing.T) {

@@ -31,7 +31,7 @@ lint: ## run code lint
 
 check-required-toolset:
 	@command -v dep > /dev/null || (echo "Install golang/dep..." && go get -u github.com/golang/dep/cmd/dep)
-	@command -v gometalinter > /dev/null || (echo "Install gometalinter..." && go get -u gopkg.in/alecthomas/gometalinter.v1 && gometalinter.v1 --install)
+	@command -v gometalinter.v1 > /dev/null || (echo "Install gometalinter..." && go get -u gopkg.in/alecthomas/gometalinter.v1 && gometalinter.v1 --install)
 
 
 dep-install: check-required-toolset ## install go dependencies
