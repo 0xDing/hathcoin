@@ -1,4 +1,4 @@
-##########################
+##########################s
 # HashCoin Configuration #
 ##########################
 
@@ -7,4 +7,4 @@ addr = "0.0.0.0:8081" # RPC server listen address
 initial_peers = "_hathcoin-discovery._tcp.boris.tech" # Discover initial peer list (DNS SRV record's FQDN)
 data_dir = "./db"  # Data store path
 log_driver = "stdio" # {stdio, file}
-log_dir = "./logs" # Log store path, only available on `log_driver` is `file`.
+log_file = "./logs/hathcoin.log" # Log store path, only available on `log_driver` is `file`.

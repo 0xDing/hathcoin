@@ -12,7 +12,7 @@ import (
 var File string
 
 // InitConfig reads in config file and ENV variables if set.
-func InitConfig() {
+func init() {
 	if File != "" {
 		// Use config file from the flag.
 		viper.SetConfigFile(File)

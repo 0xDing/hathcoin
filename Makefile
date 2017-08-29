@@ -20,6 +20,7 @@ build: clean ## build HashCoin
 	@mkdir -p ${DIST_DIR}
 	@${GOEXE} build -race -x ${LDFLAGS} -o ${DIST_DIR}/hathcoin ${PACKAGE}
 	mkdir -p ${DIST_DIR}/config
+	mkdir -p ${DIST_DIR}/logs
 	@cp $(CURDIR)/LICENSE ${DIST_DIR}/LICENSE
 	@cp $(CURDIR)/config/hathcoin.default.toml ${DIST_DIR}/config/hathcoin.toml
 

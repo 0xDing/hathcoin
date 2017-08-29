@@ -13,13 +13,12 @@ var cfgFile string
 // RootCmd represents the base command when called without any subcommands
 var RootCmd = &cobra.Command{
 	Use:   "hathcoin",
-	Short: "HathCoin is an experimental digital currency. Long live the man who changed china. Θ..Θ +1s",
+	Short: "HathCoin is an experimental digital currency, Just for learning blockchain and golang.",
 	Long: `
-那么人呐就都不知道，自己就不可以预料。
-你一个人的命运啊，当然要靠自我奋斗，但是也要考虑到历史的行程。
+垂死病中惊坐起，谈笑风生又一年
 
-HathCoin is an experimental digital currency.
-Long live the man who changed china.`,
+HathCoin is an experimental digital currency, Just for learning blockchain and golang.
+"Hath(蛤丝)" is a Chinese Internet meme. Long live the man who changed china.`,
 	// Uncomment the following line if your bare application
 	// has an action associated with it:
 	//	Run: func(cmd *cobra.Command, args []string) { },
@@ -36,7 +35,6 @@ func Execute() {
 
 func init() {
 	config.File = cfgFile
-	cobra.OnInitialize(config.InitConfig)
 
 	// Here you will define your flags and configuration settings.
 	// Cobra supports persistent flags, which, if defined here,
