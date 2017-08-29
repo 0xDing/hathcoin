@@ -26,6 +26,12 @@
   version = "v1.0"
 
 [[projects]]
+  branch = "master"
+  name = "github.com/itchyny/base58-go"
+  packages = ["."]
+  revision = "4b24a7dfa1bfba3724ffb3598b1c6ded1cff087f"
+
+[[projects]]
   name = "github.com/magiconair/properties"
   packages = ["."]
   revision = "be5ece7dd465ab0765a9682137865547526d1dfb"
@@ -136,6 +142,6 @@
 [solve-meta]
   analyzer-name = "dep"
   analyzer-version = 1
-  inputs-digest = "5999caf3fadd3d134ac02dba6d16ace2e69291694ced3baa7a8e310d4f285f8a"
+  inputs-digest = "8d7387ed0c63b88033aaf04d42a19ec1ec3189bfbc8aa0c2ae937548016a6235"
   solver-name = "gps-cdcl"
   solver-version = 1

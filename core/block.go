@@ -1,5 +1,9 @@
 package core
 
+import (
+	"reflect"
+)
+
 // Block is permanently record file storage transaction data
 type Block struct {
 	*BlockHeader
@@ -40,3 +44,61 @@ type BlockHeader struct {
 
 // BlockSlice
 type BlockSlice []Block
+
+// New Block
+func NewBlock(prevHash string) Block {
+	header := &BlockHeader{PrevHash: prevHash}
+	return Block{header, "", new(TransactionSlice)}
+}
+
+// Return previous block
+func (bs BlockSlice) PrevBlock() *Block {
+	l := len(bs)
+	if l == 0 {
+		return nil
+	}
+	return &bs[l-1]
+}
+
+// Check block is exists in blockchain
+func (bs BlockSlice) Exists(block Block) bool {
+	l := len(bs)
+	// if a block exists is more likely to be on top.
+	for i := l - 1; i >= 0; i-- {
+		if reflect.DeepEqual(block.Hash, bs[i].Hash) {
+			return true
+		}
+	}
+	return false
+}
+
+/* todo:
+
+// Add Transaction to block
+func (block *Block) AddTransaction(t *Transaction) {
+	ts := block.TransactionSlice.AddTransaction(*t)
+	block.TransactionSlice = &ts
+}
+
+// calculate block Hash
+func (block *Block) CalcHash() string {
+	header, _ := block.BlockHeader.MarshalBinary()
+	return crypto.SM3Hash(header)
+}
+
+// Verify Block
+func (block *Block) VerifyBlock(prefix []byte) bool {
+	hash := block.CalcHash()
+	merkel := block.GenerateMerkelRoot()
+
+	return reflect.DeepEqual(merkel, block.BlockHeader.MerkleRoot) &&
+		CheckProofOfWork(prefix, hash) &&
+		SignatureVerify(block.BlockHeader.Origin, block.Hash, hash)
+}
+
+// Sign Block
+func (block *Block) Sign(keypair *crypto.Keypair) string {
+	s, _ := keypair.Sign(block.CalcHash())
+	retrun s
+}
+*/
