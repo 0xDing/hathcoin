@@ -1,14 +1,52 @@
 syntax = "proto3";
-package hathcoin;
+package rpc;
 
-message Block {
-
+message TransactionHeader {
+    bytes From = 1;
+    bytes To = 2;
+    uint32 Timestamp = 3;
+    bytes PayloadHash = 4;
+    uint32 PayloadLength = 5;
+    uint32 Nonce = 6;
 }
 
-message Transaction {
 
+message Transaction {
+    TransactionHeader Header = 1;
+    bytes Hash = 2;
+    bytes Payload = 3;
+}
+
+message BlockHeader {
+    int32 Version = 1;
+    bytes Origin = 2;
+    bytes PrevHash = 3;
+    bytes MerkelRoot = 4;
+    uint32 Timestamp = 5;
+    uint32 Nonce = 6;
+}
+
+message Block {
+    BlockHeader BlockHeader = 1;
+    bytes Hash = 2;
+    repeated Transaction Transaction = 3;
 }
 
 message Peer {
-    string addr = 1;
+    string Addr = 1;
+    string PublicKey = 2;
+}
+
+message Peers {
+    repeated Peer Peer = 1;
+}
+
+message Empty {
+}
+
+service Info {
+    rpc ShowPeer (Empty) returns (Peer) {
+    }
+    rpc ShowPeers (Empty) returns (Peers) {
+    }
 }

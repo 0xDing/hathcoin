@@ -21,6 +21,7 @@ build: clean ## build HashCoin
 	@${GOEXE} build -race -x ${LDFLAGS} -o ${DIST_DIR}/hathcoin ${PACKAGE}
 	mkdir -p ${DIST_DIR}/config
 	mkdir -p ${DIST_DIR}/logs
+	mkdir -p ${DIST_DIR}/db
 	@cp $(CURDIR)/LICENSE ${DIST_DIR}/LICENSE
 	@cp $(CURDIR)/config/hathcoin.toml ${DIST_DIR}/config/hathcoin.toml
 
@@ -33,6 +34,7 @@ lint: ## run code lint
 check-required-toolset:
 	@command -v dep > /dev/null || (echo "Install golang/dep..." && go get -u github.com/golang/dep/cmd/dep)
 	@command -v gometalinter.v1 > /dev/null || (echo "Install gometalinter..." && go get -u gopkg.in/alecthomas/gometalinter.v1 && gometalinter.v1 --install)
+	@command -v protoc-gen-gofast > /dev/null || (echo "Install protoc-gen-gofast..." && go get -u github.com/gogo/protobuf/protoc-gen-gofast)
 
 
 dep-install: check-required-toolset ## install go dependencies
@@ -42,7 +44,10 @@ dep-update: ## update go dependencies
 	dep ensure -update
 
 clean: ## clean the build artifacts
-	rm -rf $DIST_DIR/*
+	@rm -rf $DIST_DIR/*
+
+generate-protobuf: ## Compiling protocol buffers
+	cd rpc;protoc --gofast_out=. --js_out=library=hathcoin,binary:. --python_out=. --ruby_out=. --objc_out=. --java_out=. ./hathcoin.proto
 
 help: ## help
 	@echo "HathCoin Makefile Tasks list:"

@@ -5,6 +5,7 @@ import (
 	"net"
 
 	"github.com/borisding1994/hathcoin/config"
+	"github.com/borisding1994/hathcoin/core"
 	"github.com/borisding1994/hathcoin/utils"
 	"github.com/spf13/cobra"
 	"google.golang.org/grpc"
@@ -21,6 +22,8 @@ var serverCmd = &cobra.Command{
 			utils.Logger.Fatal(err)
 			return err
 		}
+		// load blockchain
+		core.Run()
 		s := grpc.NewServer()
 		// Register reflection service on gRPC server.
 		//

@@ -23,4 +23,11 @@ const (
 	TestBlockPowComplexity = 2
 
 	PowPrefix = 0
+
+	// Identifies Hathcoin protocol version
+	HTCProtoVersion = 1
 )
+
+func Run() {
+	LoadKeypair()
+}

@@ -25,7 +25,7 @@ type Block struct {
 type BlockHeader struct {
 	// Version of the Block.
 	// 虵: 协议升级要用遵守基本法啊 识得唔识得啊
-	Version int8
+	Version int32
 
 	// Origin is Origin public key (use SM2-P-256)
 	// 虵: 闷声大发财 识得唔识得啊
@@ -53,7 +53,7 @@ type BlockSlice []Block
 
 // New Block
 func NewBlock(prevHash []byte) Block {
-	header := &BlockHeader{PrevHash: prevHash}
+	header := &BlockHeader{PrevHash: prevHash, Version: HTCProtoVersion}
 	return Block{header, nil, new(TransactionSlice)}
 }
 

@@ -40,5 +40,4 @@ func init() {
 	// will be global for your application.
 	RootCmd.PersistentFlags().StringVarP(&cfgFile, "config", "c",
 		"", "config file (default is ./config/hathcoin.toml)")
-
 }
