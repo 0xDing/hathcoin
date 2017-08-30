@@ -1,6 +1,6 @@
 # HathCoin 蛤丝币
 
-[![Build Status](https://travis-ci.org/borisding1994/hathcoin.svg)](https://travis-ci.org/borisding1994/hathcoin) [![Docker Pulls](https://img.shields.io/docker/pulls/borisding/hathcoin.svg)](https://hub.docker.com/r/borisding/hathcoin/) [![+1s](https://img.shields.io/badge/%CE%98..%CE%98-%2B1s-green.svg)](https://zh.wikipedia.org/wiki/%E8%86%9C%E8%9B%A4%E6%96%87%E5%8C%96)
+[![Build Status](https://travis-ci.org/borisding1994/hathcoin.svg)](https://travis-ci.org/borisding1994/hathcoin) [![Docker Pulls](https://img.shields.io/docker/pulls/borisding/hathcoin.svg)](https://hub.docker.com/r/borisding/hathcoin/) [![+1s](https://img.shields.io/badge/%CE%98..%CE%98-%2B1s-green.svg)](https://zh.wikipedia.org/wiki/%E8%86%9C%E8%9B%A4%E6%96%87%E5%8C%96) [![Go Report Card](https://goreportcard.com/badge/github.com/borisding1994/hathcoin)](https://goreportcard.com/report/github.com/borisding1994/hathcoin)
 
 >© 2017 borisding<i@boris.tech> | Licensed under the Apache License
 

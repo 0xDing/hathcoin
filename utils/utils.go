@@ -2,6 +2,7 @@ package utils
 
 import (
 	"math/big"
+	"time"
 )
 
 // create an array filled with b
@@ -45,7 +46,33 @@ func SplitBig(b *big.Int, parts int) []*big.Int {
 
 }
 
+func FitBytesInto(d []byte, i int) []byte {
+	if len(d) < i {
+		dif := i - len(d)
+		return append(ArrayOfBytes(dif, 0), d...)
+	}
+	return d[:i]
+}
+
 // convert bytes array to BigInt
 func Bytes2BigInt(b []byte) *big.Int {
 	return new(big.Int).SetBytes(b)
+}
+
+func StripByte(d []byte, b byte) []byte {
+	for i, bb := range d {
+		if bb != b {
+			return d[i:]
+		}
+	}
+	return nil
+}
+
+func Timeout(i time.Duration) chan bool {
+	t := make(chan bool)
+	go func() {
+		time.Sleep(i)
+		t <- true
+	}()
+	return t
 }
