@@ -26,12 +26,6 @@
   version = "v1.0"
 
 [[projects]]
-  branch = "master"
-  name = "github.com/itchyny/base58-go"
-  packages = ["."]
-  revision = "4b24a7dfa1bfba3724ffb3598b1c6ded1cff087f"
-
-[[projects]]
   name = "github.com/magiconair/properties"
   packages = ["."]
   revision = "be5ece7dd465ab0765a9682137865547526d1dfb"

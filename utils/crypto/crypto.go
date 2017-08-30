@@ -3,12 +3,11 @@ package crypto
 import (
 	"crypto/rand"
 	"encoding/hex"
-	"math/big"
 
 	"github.com/borisding1994/hathcoin/utils"
+	"github.com/borisding1994/hathcoin/utils/baseha"
 	"github.com/borisding1994/hathcoin/utils/crypto/sm2"
 	"github.com/borisding1994/hathcoin/utils/crypto/sm3"
-	"github.com/itchyny/base58-go"
 )
 
 /*
@@ -43,15 +42,8 @@ func GenerateKeypair() *Keypair {
 	priv, _ := sm2.GenerateKey(sm2.P256Sm2(), rand.Reader)
 
 	pub := utils.BigIntJoin(Sm2KeySize, priv.PublicKey.X, priv.PublicKey.Y)
-	errMsg := "GenerateKeypair() failure on base58.RippleEncoding.Encode"
-	pubKey, err := base58.RippleEncoding.Encode(pub.Bytes())
-	if err != nil {
-		utils.Logger.Fatal(errMsg, " (pubKey) ", err)
-	}
-	privKey, err := base58.RippleEncoding.Encode(priv.D.Bytes())
-	if err != nil {
-		utils.Logger.Error(errMsg, " (privKey) ", err)
-	}
+	pubKey := baseha.STD.Encode(pub.Bytes())
+	privKey := baseha.STD.Encode(priv.D.Bytes())
 	kp := Keypair{
 		PublicKey:  pubKey,
 		PrivateKey: privKey,
@@ -61,12 +53,9 @@ func GenerateKeypair() *Keypair {
 
 // Decode Base58 PublicKey Bytes Array to SM2.PublicKey
 func decodePubKey(pubKey []byte) (sm2.PublicKey, error) {
-	pubKeyBytes, err := base58.RippleEncoding.Decode(pubKey)
-	if err != nil {
-		return sm2.PublicKey{}, err
-	}
+	pubKeyBytes := baseha.STD.Decode(string(pubKey))
 	// equivalent to: [priv.PublicKey.X, priv.PublicKey.Y]
-	p := utils.SplitBig(new(big.Int).SetBytes(pubKeyBytes), 2)
+	p := utils.SplitBig(utils.Bytes2BigInt(pubKeyBytes), 2)
 	x, y := p[0], p[1]
 	k := sm2.PublicKey{
 		Curve: sm2.P256Sm2(),
@@ -79,11 +68,8 @@ func decodePubKey(pubKey []byte) (sm2.PublicKey, error) {
 // Sign Message by PrivateKey
 func (k *Keypair) Sign(hash []byte) ([]byte, error) {
 	// get PrivateKey
-	privKeyBytes, err := base58.RippleEncoding.Decode(k.PrivateKey)
-	if err != nil {
-		return nil, err
-	}
-	privKey := new(big.Int).SetBytes(privKeyBytes)
+	privKeyBytes := baseha.STD.Decode(string(k.PrivateKey))
+	privKey := utils.Bytes2BigInt(privKeyBytes)
 
 	// get PublicKey
 	pubKey, err := decodePubKey(k.PublicKey)
@@ -98,10 +84,7 @@ func (k *Keypair) Sign(hash []byte) ([]byte, error) {
 	}
 	r, s, _ := sm2.Sign(rand.Reader, &p, hash)
 	// encoding sign hash
-	sign, err := base58.RippleEncoding.Encode(utils.BigIntJoin(Sm2KeySize, r, s).Bytes())
-	if err != nil {
-		return nil, err
-	}
+	sign := baseha.STD.Encode(utils.BigIntJoin(Sm2KeySize, r, s).Bytes())
 	return sign, nil
 }
 
@@ -115,13 +98,13 @@ func VerifySign(pubKey, sign, hash []byte) bool {
 	}
 
 	// decode Sign
-	sm2Sign, err := base58.RippleEncoding.Decode(sign)
+	sm2Sign := baseha.STD.Decode(string(sign))
 	if err != nil {
 		utils.Logger.Error("Decode Sign failure on VerifySign. ", err)
 		return false
 	}
 	// split sign to [r,s]
-	sl := utils.SplitBig(new(big.Int).SetBytes(sm2Sign), 2)
+	sl := utils.SplitBig(utils.Bytes2BigInt(sm2Sign), 2)
 	r, s := sl[0], sl[1]
 	return sm2.Verify(&sm2PublicKey, hash, r, s)
 }

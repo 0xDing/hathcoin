@@ -4,5 +4,5 @@ go:
   - 1.9
 install: make dep-install
 script:
-  - make lint
   - make test
+  - make build

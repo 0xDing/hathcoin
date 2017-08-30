@@ -3,23 +3,18 @@ package config
 import (
 	"fmt"
 	"os"
-	"path/filepath"
 
 	"github.com/spf13/viper"
 )
 
-// File is configfile
-var File string
-
 // InitConfig reads in config file and ENV variables if set.
 func init() {
-	if File != "" {
+	if file := os.Getenv("HAC_CONFIG"); file != "" {
 		// Use config file from the flag.
-		viper.SetConfigFile(File)
+		viper.SetConfigFile(file)
 	} else {
 		// look for config in the directory of the currently running file (without extension).
-		appPath, _ := filepath.Abs(filepath.Dir(os.Args[0]))
-		viper.AddConfigPath(filepath.Join(appPath, "config"))
+		viper.AddConfigPath("./config")
 		viper.SetConfigName("hathcoin")
 	}
 
@@ -30,7 +25,7 @@ func init() {
 	if err := viper.ReadInConfig(); err == nil {
 		fmt.Println("Using config file:", viper.ConfigFileUsed())
 	} else {
-		panic(err)
+		fmt.Println(err)
 	}
 }
 
@@ -41,21 +36,13 @@ func init() {
 // override, flag, env, config file, key/value store, default
 //
 // Get returns an interface.
-func Get(key string) interface{} {
-	return viper.Get(key)
-}
+var Get = viper.Get
 
 // GetInt returns the value associated with the key as an integer.
-func GetInt(key string) int {
-	return viper.GetInt(key)
-}
+var GetInt = viper.GetInt
 
 // GetString returns the value associated with the key as a string.
-func GetString(key string) string {
-	return viper.GetString(key)
-}
+var GetString = viper.GetString
 
 // GetBool returns the value associated with the key as a boolean.
-func GetBool(key string) bool {
-	return viper.GetBool(key)
-}
+var GetBool = viper.GetBool

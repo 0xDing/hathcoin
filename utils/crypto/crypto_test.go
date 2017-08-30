@@ -9,3 +9,10 @@ func TestSM3Hash(t *testing.T) {
 		t.Fatalf("SM3Hash(\"%v\") expect is %v , but got %v", msg, msgHash, hash)
 	}
 }
+
+func TestGenerateKeypair(t *testing.T) {
+	kp := GenerateKeypair()
+	if kp.PublicKey == nil || kp.PrivateKey == nil {
+		t.Fatalf("GenerateKeypair failure, PubKey is %v, PrivKey is %v", kp.PublicKey, kp.PrivateKey)
+	}
+}

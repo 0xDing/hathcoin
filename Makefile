@@ -22,10 +22,10 @@ build: clean ## build HashCoin
 	mkdir -p ${DIST_DIR}/config
 	mkdir -p ${DIST_DIR}/logs
 	@cp $(CURDIR)/LICENSE ${DIST_DIR}/LICENSE
-	@cp $(CURDIR)/config/hathcoin.default.toml ${DIST_DIR}/config/hathcoin.toml
+	@cp $(CURDIR)/config/hathcoin.toml ${DIST_DIR}/config/hathcoin.toml
 
 test: ## run test
-	@${GOEXE} test -v $(GO_TEST_PACKAGES)
+	@HAC_CONFIG=$(CURDIR)/config/hathcoin.toml ${GOEXE} test -v $(GO_TEST_PACKAGES) -outputdir $(CURDIR)
 
 lint: ## run code lint
 	@gometalinter.v1 --config .linter.conf --vendor ./...

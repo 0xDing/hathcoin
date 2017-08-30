@@ -1,6 +1,8 @@
 package utils
 
-import "math/big"
+import (
+	"math/big"
+)
 
 // create an array filled with b
 // ArrayOfBytes(3,0) => [0 0 0]
@@ -41,4 +43,9 @@ func SplitBig(b *big.Int, parts int) []*big.Int {
 	}
 	return as
 
+}
+
+// convert bytes array to BigInt
+func Bytes2BigInt(b []byte) *big.Int {
+	return new(big.Int).SetBytes(b)
 }

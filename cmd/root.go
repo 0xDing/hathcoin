@@ -4,7 +4,6 @@ import (
 	"fmt"
 	"os"
 
-	"github.com/borisding1994/hathcoin/config"
 	"github.com/spf13/cobra"
 )
 
@@ -34,7 +33,7 @@ func Execute() {
 }
 
 func init() {
-	config.File = cfgFile
+	os.Setenv("HAC_CONFIG", cfgFile)
 
 	// Here you will define your flags and configuration settings.
 	// Cobra supports persistent flags, which, if defined here,
