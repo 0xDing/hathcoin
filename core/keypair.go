@@ -27,7 +27,7 @@ func LoadKeypair() {
 			utils.Logger.Fatal("Failed to save keypair data file. ", err)
 		}
 	}
-	Peer.Keypair = keypair
+	currentPeer.Keypair = keypair
 }
 
 func openKeypair(dir string) (*crypto.Keypair, error) {

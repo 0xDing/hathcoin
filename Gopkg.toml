@@ -28,7 +28,3 @@
 [[constraint]]
   name = "github.com/spf13/viper"
   version = "1.0.0"
-
-[[constraint]]
-  name = "google.golang.org/grpc"
-  version = "v1.5.2"

@@ -3,7 +3,7 @@ MAINTAINER i@boris.tech
 
 COPY . /go/src/github.com/borisding1994/hathcoin
 WORKDIR /go/src/github.com/borisding1994/hathcoin
-RUN apk --no-cache add make openssl git protobuf
+RUN apk --no-cache add make openssl git
 
 # Add USTC repo
 RUN apk add --update-cache tzdata \

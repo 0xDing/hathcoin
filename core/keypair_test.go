@@ -11,6 +11,6 @@ func TestLoadKeypair(t *testing.T) {
 	dir := config.GetString("data_dir")
 	os.MkdirAll(dir, 0777)
 	LoadKeypair()
-	t.Logf(string(Peer.Keypair.PublicKey))
+	t.Logf(string(currentPeer.Keypair.PublicKey))
 	os.RemoveAll(dir)
 }
