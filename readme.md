@@ -1,4 +1,4 @@
-# HathCoin 蛤丝币
+# HathCoin 蛤丝币(Work In Process)
 
 [![Build Status](https://travis-ci.org/borisding1994/hathcoin.svg)](https://travis-ci.org/borisding1994/hathcoin) [![Docker Pulls](https://img.shields.io/docker/pulls/borisding/hathcoin.svg)](https://hub.docker.com/r/borisding/hathcoin/) [![Go Report Card](https://goreportcard.com/badge/github.com/borisding1994/hathcoin)](https://goreportcard.com/report/github.com/borisding1994/hathcoin) [![+1s](https://img.shields.io/badge/%CE%98..%CE%98-%2B1s-green.svg)](https://en.wikipedia.org/wiki/Moha_culture)
 
