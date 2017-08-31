@@ -2,7 +2,7 @@
 
 [![Build Status](https://travis-ci.org/borisding1994/hathcoin.svg)](https://travis-ci.org/borisding1994/hathcoin) [![Docker Pulls](https://img.shields.io/docker/pulls/borisding/hathcoin.svg)](https://hub.docker.com/r/borisding/hathcoin/) [![Go Report Card](https://goreportcard.com/badge/github.com/borisding1994/hathcoin)](https://goreportcard.com/report/github.com/borisding1994/hathcoin) [![+1s](https://img.shields.io/badge/%CE%98..%CE%98-%2B1s-green.svg)](https://en.wikipedia.org/wiki/Moha_culture)
 
->© 2017 borisding<i@boris.tech> | Licensed under the Apache License
+>© 2017 borisding [<i@boris.tech>](https://github.com/borisding1994/hathcoin) | Licensed under the Apache License
 
 HathCoin is an experimental digital currency, Just for learning blockchain and golang.
 
